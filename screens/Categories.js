@@ -9,7 +9,7 @@ const renderCategory = (itemData) => {
 const Categories = () => {
   return (
     <View>
-        <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategory}/>
+        <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategory} numColumns={2}/>
     </View>
   )
 }
