@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Categories from './screens/Categories';
 import { StatusBar } from 'expo-status-bar';
 import MealsOverview from './screens/MealsOverview';
+import MealDetail from './screens/MealsDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ function App() {
             }}
           />
         <Stack.Screen name="MealsOverview" component={MealsOverview} />
+        <Stack.Screen name="MealDetail" component={MealDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
