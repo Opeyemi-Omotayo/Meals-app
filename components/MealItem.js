@@ -8,14 +8,24 @@ import {
   } from 'react-native';
   import { useNavigation } from '@react-navigation/native';
   
-  function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
+  import MealDetails from './MealDetails';
+  
+  function MealItem({
+    id,
+    title,
+    imageUrl,
+    duration,
+    complexity,
+    affordability,
+  }) {
     const navigation = useNavigation();
-
-    function selectMealItemHandler () {
-        navigation.navigate("MealDetail", { mealId: id})
-
+  
+    function selectMealItemHandler() {
+      navigation.navigate('MealDetail', {
+        mealId: id,
+      });
     }
-
+  
     return (
       <View style={styles.mealItem}>
         <Pressable
@@ -28,11 +38,11 @@ import {
               <Image source={{ uri: imageUrl }} style={styles.image} />
               <Text style={styles.title}>{title}</Text>
             </View>
-            <View style={styles.details}>
-              <Text style={styles.detailItem}>{duration}m</Text>
-              <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-              <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-            </View>
+            <MealDetails
+              duration={duration}
+              affordability={affordability}
+              complexity={complexity}
+            />
           </View>
         </Pressable>
       </View>
@@ -69,15 +79,5 @@ import {
       textAlign: 'center',
       fontSize: 18,
       margin: 8,
-    },
-    details: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 8,
-    },
-    detailItem: {
-      marginHorizontal: 4,
-      fontSize: 12,
     },
   });
