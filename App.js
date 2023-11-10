@@ -7,8 +7,8 @@ import { StatusBar } from "expo-status-bar";
 import MealsOverview from "./screens/MealsOverview";
 import MealDetail from "./screens/MealsDetail";
 import Favorites from "./screens/Favorites";
-import { Ionicons } from '@expo/vector-icons';
-
+import { Ionicons } from "@expo/vector-icons";
+import FavoritesContextProvider from "./store/context/FavoritesContext";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -51,30 +51,32 @@ function DrawerNavigator() {
 
 function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="dark" />
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: { backgroundColor: "#351401" },
-          headerTintColor: "white",
-          contentStyle: { backgroundColor: "#3f2f25" },
-        }}
-      >
-        <Stack.Screen
-          name="Drawer"
-          component={DrawerNavigator}
-          options={{
-            headerShown: false,
+    <FavoritesContextProvider>
+      <NavigationContainer>
+        <StatusBar style="dark" />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: "#351401" },
+            headerTintColor: "white",
+            contentStyle: { backgroundColor: "#3f2f25" },
           }}
-        />
-        <Stack.Screen name="MealsOverview" component={MealsOverview} />
-        <Stack.Screen
-          name="MealDetail"
-          component={MealDetail}
-          options={{ title: "About the meal" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+        >
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen name="MealsOverview" component={MealsOverview} />
+          <Stack.Screen
+            name="MealDetail"
+            component={MealDetail}
+            options={{ title: "About the meal" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </FavoritesContextProvider>
   );
 }
 
