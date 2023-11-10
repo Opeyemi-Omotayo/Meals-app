@@ -5,7 +5,6 @@ import {
   Image,
   StyleSheet,
   ScrollView,
-  Button,
 } from "react-native";
 import { FavoritesContext } from "../store/context/FavoritesContext";
 
@@ -16,7 +15,7 @@ import { MEALS } from "../data/DummyData";
 import IconButton from "../components/IconButton";
 
 function MealDetail({ route, navigation }) {
-  const favoriteMealsCtx = useContext(FavoritesContext);
+  const { addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const mealId = route.params.mealId;
 
@@ -26,9 +25,9 @@ function MealDetail({ route, navigation }) {
 
   function changeFavoriteStatusHandler() {
     if (mealIsFavorite) {
-      favoriteMealsCtx.removeFavorite(mealId);
+      removeFavorite(mealId);
     } else {
-      favoriteMealsCtx.addFavorite(mealId);
+      addFavorite(mealId);
     }
   }
 
