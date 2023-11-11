@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { useContext } from 'react';
+import { View, Text, StyleSheet } from "react-native";
+import { useContext } from "react";
 
-import { MEALS } from '../data/DummyData';
-import { FavoritesContext } from '../store/context/FavoritesContext';
-import MealsList from '../components/MealList/MealList';
+import { MEALS } from "../data/DummyData";
+import { FavoritesContext } from "../store/context/FavoritesContext";
+import MealsList from "../components/MealList/MealList";
 
 function Favorites() {
   const favoriteMealsCtx = useContext(FavoritesContext);
@@ -28,12 +28,12 @@ export default Favorites;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
 });
